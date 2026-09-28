@@ -1,0 +1,22 @@
+<!-- Este html se crea exclusivamente para el funcionamiento de la aplicación en GitHub Pages. Al recargar la página desde una ruta interna o una ruta de detalle, GitHub Pages muestra su propio error 404 al no encontrar físicamente esa ruta. Por ello, siguiendo las instrucciones de Copilot y ChatGPT, se crea este archivo para redirigir nuevamente a la aplicación y permitir que la SPA recupere la ruta solicitada. -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Product Showcase</title>
+    <script>
+        // antes de volver al inicio, se guarda la URL que el usuario estaba intentando abrir
+        sessionStorage.setItem(
+            'rutaRedireccion',
+            location.pathname + location.search + location.hash
+        );
+
+        // se redirige a la ruta principal de Vue Product Showcase en GitHub Pages
+        location.replace('/Proyecto-modulo-7-catalogo-productos/');
+    </script>
+</head>
+<body>
+    <p>Redireccionando a Vue Product Showcase...</p>
+</body>
+</html>
