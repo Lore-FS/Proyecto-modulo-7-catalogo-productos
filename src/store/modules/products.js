@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-// modulo posts.js es una seccion del store global con todo lo asociado a posts
+// modulo products.js es una seccion del store global con todo lo asociado a productos
 export default { // no se usa createStore en los modulos
   namespaced: true, // prpopiedad namespaced en valor true para usar modulos
   state: () => ({ // el state es una funcion flecha que retorna objeto
@@ -38,6 +38,9 @@ export default { // no se usa createStore en los modulos
     categoriasProducts: state => state.products.map(product => product.category.name),
     mostrarListaProductos(state) {
       return state.products
+    },
+    isEmpty: state => {
+      return !state.loading && !state.error && state.products.length === 0
     }
   }
 }

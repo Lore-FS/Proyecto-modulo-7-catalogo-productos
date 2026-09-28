@@ -2,7 +2,7 @@
 
 Aplicación web desarrollada con **Vue 3** que funciona como una **SPA (Single Page Application)** para consultar y gestionar un catálogo de productos obtenido desde una API REST externa.
 
-La aplicación permite visualizar productos, filtrar por categoría, consultar el detalle de cada producto, marcar o quitar productos de favoritos y alternar entre tema claro y oscuro. Además, incorpora manejo de estados de carga y error, navegación mediante Vue Router, pruebas unitarias con Jest y Vue Test Utils y una prueba end-to-end (E2E) con Cypress.
+La aplicación permite visualizar productos, filtrar por categoría, consultar el detalle de cada producto, marcar o quitar productos de favoritos y alternar entre tema claro y oscuro. Además, incorpora manejo de estados de carga, error y catálogo vacío, navegación mediante Vue Router, pruebas unitarias con Jest y Vue Test Utils y una prueba end-to-end (E2E) con Cypress.
 
 ## Tecnologías utilizadas
 
@@ -243,6 +243,7 @@ Este comando levanta el servidor de Vue CLI, espera a que `http://localhost:8080
 - Consumo de una API REST externa mediante Axios.
 - Indicador visual mientras se cargan los productos.
 - Mensaje visual cuando ocurre un error al consultar la API.
+- Mensaje visual cuando el catálogo se encuentra vacío después de una carga correcta desde la API.
 - Filtrado de productos por categoría.
 - Navegación hacia el detalle de un producto.
 - Validación de parámetros dinámicos numéricos en las rutas de productos.
@@ -344,6 +345,7 @@ Administra:
 - Estado de carga.
 - Estado de error.
 - Consulta de productos a la API.
+- Estado derivado de catálogo vacío mediante el getter `isEmpty`.
 
 ### `filters`
 
@@ -375,7 +377,7 @@ Las **acciones** se utilizan para ejecutar operaciones y coordinar cambios de es
 
 Las **mutaciones** realizan la modificación efectiva del estado del store.
 
-Los **getters** permiten obtener información derivada o reutilizable, como la cantidad de productos, los productos filtrados o la comprobación de si un producto pertenece a favoritos.
+Los **getters** permiten obtener información derivada o reutilizable, como la cantidad de productos, los productos filtrados, la comprobación de si un producto pertenece a favoritos y el estado de catálogo vacío. Para este último caso, el getter `isEmpty` verifica que la carga haya finalizado, que no exista error y que el arreglo de productos esté vacío.
 
 Esta distribución mantiene un flujo de datos predecible y evita modificar directamente el estado desde distintos componentes.
 
@@ -391,7 +393,7 @@ axios.get('https://api.escuelajs.co/api/v1/products?offset=0&limit=20')
 
 Axios se mantiene dentro de las acciones de Vuex en lugar de realizar las peticiones directamente desde cada componente. Esta decisión centraliza el acceso a los datos y evita repetir lógica de comunicación con la API en distintas vistas.
 
-## 7. Manejo de carga y errores
+## 7. Manejo de carga, errores y catálogo vacío
 
 El módulo `products` mantiene los estados:
 
@@ -401,13 +403,16 @@ loading: false
 error: null
 ```
 
+Además, el módulo `products` incorpora el getter `isEmpty`, que determina si la carga terminó correctamente, no existe un error y el arreglo de productos se encuentra vacío.
+
 Antes de iniciar la consulta a la API se activa `loading`. Al finalizar la operación se desactiva mediante `finally`, independientemente de si la solicitud fue exitosa o produjo un error.
 
 La vista del catálogo reacciona a estos estados mostrando:
 
 - Un `v-progress-circular` mientras los productos se están cargando.
 - Un `v-alert` cuando ocurre un error.
-- La lista de productos cuando la carga termina correctamente.
+- Un `v-alert` de tipo `warning` cuando la carga finaliza correctamente pero no existen productos disponibles.
+- La lista de productos cuando la carga termina correctamente y existen productos disponibles.
 
 Esto mejora la experiencia de usuario porque la interfaz informa claramente el estado de la operación asincrónica.
 

@@ -16,6 +16,8 @@ onMounted(async () => {
 const loading = computed(() => store.state.products.loading)
 const error = computed(() => store.state.products.error)
 
+const empty = computed(() => store.getters['products/isEmpty'])
+
 // obtener todos las categorias existentes, sin repetirlas, según el arreglo de productos usando funcion computada
 const categorias = computed(() => {
     const categoriasProductos = store.state.products.products.map(product => product.category.name)
@@ -58,9 +60,15 @@ const productosFiltrados = computed(() => store.getters['filters/filteredProduct
             <v-progress-circular indeterminate color="primary" />
             <p>Cargando Catálogo de Productos...</p>
         </div>
+
         <v-alert v-else-if="error" type="error" variant="tonal" class="mensaje-error">
             <h3>No fue posible cargar el catálogo de productos</h3>
             <p>Error: {{ error }}</p>
+        </v-alert>
+
+         <v-alert v-else-if="empty" type="warning" variant="tonal" class="mensaje-vacio">
+            <h3>No se encontraron productos</h3>
+            <p>El catálogo no contiene productos disponibles.</p>
         </v-alert>
 
         <!-- renderiza una tarjeta por cada producto filtrado, usando ProductCardComponent -->
@@ -184,6 +192,42 @@ const productosFiltrados = computed(() => store.getters['filters/filteredProduct
 }
 
 .v-theme--darkTheme .mensaje-error p {
+    color: #000022;
+}
+
+.mensaje-vacio {
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.12);
+    text-align: center;
+}
+
+.v-theme--darkTheme .mensaje-vacio {
+    background-color: #c7a361;
+    border: 1px solid #3a2f1f;
+}
+
+.mensaje-vacio h3 {
+    margin: 0 0 0.8rem;
+    color: #000022;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.v-theme--darkTheme .mensaje-vacio h3 {
+    color: #35230b;
+}
+
+.mensaje-vacio p {
+    color: #475569;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.v-theme--darkTheme .mensaje-vacio p {
+    /* color: #e2e8f0; */
     color: #000022;
 }
 
