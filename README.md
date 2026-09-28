@@ -78,7 +78,7 @@ npm run lint
 
 ## Despliegue en GitHub Pages
 
-La aplicación será publicada mediante GitHub Pages en:
+La aplicación se encuentra publicada mediante GitHub Pages en:
 
 https://lore-fs.github.io/Proyecto-modulo-7-catalogo-productos/
 
