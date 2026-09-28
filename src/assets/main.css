@@ -1,0 +1,74 @@
+:root {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #17233C;
+  background-color: white;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f4f7f6 0%, #e1f7fa 100%);
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: center;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  text-decoration: none;
+
+}
+
+.v-application.v-theme--darkTheme{
+  background-color: #091220;
+  color: #f1f5f9;
+}
+
+/* colores para tarjetas principales en modo oscuro */
+.v-theme--darkTheme .tarjeta,
+.v-theme--darkTheme .tarjeta-producto,
+.v-theme--darkTheme .tarjeta-detalle,
+.v-theme--darkTheme .formulario-producto,
+.v-theme--darkTheme .preview-producto {
+    background-color: #1e293b;
+    color: #f1f5f9;
+    border-color: #475569;
+}
+
+/* colores para textos secundarios en modo oscuro */
+.v-theme--darkTheme .datos-producto p,
+.v-theme--darkTheme .detalle-derecha p,
+.v-theme--darkTheme .encabezado-productos p {
+    color: #cbd5e1;
+}
+
+/* colores para titulos en modo osucro */
+.v-theme--darkTheme h2,
+.v-theme--darkTheme h3 {
+    color: #f8fafc;
+}
+
+
+
+
+
