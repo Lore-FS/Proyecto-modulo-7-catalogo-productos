@@ -102,7 +102,6 @@ const favoritos = computed(() => store.getters['favourites/favouritesProducts'])
 }
 
 .v-theme--darkTheme .mensaje-vacio p {
-    /* color: #e2e8f0; */
     color: #000022;
 }
 

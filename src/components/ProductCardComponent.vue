@@ -64,13 +64,11 @@ const modificarFavorito = () => {
     padding: 1.8rem;
     border: 1px solid #cbd5e1;
     border-radius: 12px;
-    /* box-shadow: 0 8px 20px rgba(30, 64, 175, 0.12); */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tarjeta-producto:hover {
     transform: translateY(-3px);
-    /* box-shadow: 0 12px 24px rgba(30, 64, 175, 0.18); */
 }
 
 .titulo-producto {
@@ -91,8 +89,6 @@ const modificarFavorito = () => {
 }
 
 .product-image {
-    /* width: 180px;
-    height: 180px; */
     object-fit: cover;
     border-radius: 8px;
 }

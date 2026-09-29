@@ -78,7 +78,6 @@ const logoActual = computed(() => {
 }
 
 .header-contenido {
-    /* max-width: 1126px; */
     min-height: 86px;
     padding: 0.8rem 1.5rem;
     display: flex;

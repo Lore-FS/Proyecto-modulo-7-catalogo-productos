@@ -113,7 +113,6 @@ const producto = computed(() => {
     padding: 2.2rem;
     border: 1px solid #cbd5e1;
     border-radius: 12px;
-    /* box-shadow: 0 8px 20px rgba(30, 64, 175, 0.12); */
 }
 
 .titulo-producto {
@@ -167,8 +166,6 @@ const producto = computed(() => {
 }
 
 .product-image {
-    /* width: 220px;
-    height: 220px; */
     object-fit: cover;
     border-radius: 8px;
 }
@@ -230,14 +227,10 @@ const producto = computed(() => {
 }
 
 .v-theme--darkTheme .mensaje-no-encontrado p {
-    /* color: #e2e8f0; */
     color: #000022;
 }
 
 .acciones-producto {
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* align-items: center; */
     width: 100%;
     margin-top: 1rem;
     justify-content: center;
@@ -269,12 +262,4 @@ const producto = computed(() => {
 
 }
 
-/* @media (max-width: 450px) {
-    .acciones-producto {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-    }
-
-} */
 </style>
